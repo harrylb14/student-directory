@@ -3,7 +3,7 @@ require 'csv'
 @possible_cohorts = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 def interactive_menu
-  loop do 
+  loop do
     print_menu
     process(STDIN.gets.chomp)
   end
@@ -18,7 +18,7 @@ def print_menu
 end
 
 def process(selection)
-  case selection 
+  case selection
       when "1"
         @students = input_students
       when "2"
@@ -29,7 +29,7 @@ def process(selection)
         load_students
       when "9"
         exit
-      else 
+      else
         puts "I don't know what you meant, try again"
   end
 end
@@ -38,7 +38,7 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   name = STDIN.gets.chomp
-  
+
   while !name.empty? do
     puts "Please enter the cohort"
     cohort = STDIN.gets.chomp.downcase.capitalize
@@ -64,7 +64,7 @@ def show_students
   print_header
   print_student_list
   print_footer
-end 
+end
 
 def print_header
   puts "The students of Villains Academy"
@@ -102,7 +102,7 @@ def try_load_students
   if File.exists?(filename)
     load_students(filename)
     puts "Loaded #{@students.count} from #{filename}"
-  else 
+  else
     puts "Sorry, #{filename} doesn't exist"
     exit
   end
